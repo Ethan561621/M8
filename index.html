@@ -28,8 +28,8 @@
             position: relative;
         }
         
-        /* INC Flag Container */
-        .inc-flag {
+        /* INC Flag Container - Proper Design */
+        .inc-flag-container {
             position: fixed;
             top: 20px;
             right: 20px;
@@ -37,42 +37,51 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            padding: 8px 12px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 5px;
+            border-radius: 5px;
+            border: 2px solid #000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            min-width: 100px;
         }
         
-        .inc-flag-text {
-            font-family: 'Cinzel', serif;
-            font-size: 0.8rem;
-            color: #ffffff;
-            text-align: center;
-            margin-top: 4px;
-            letter-spacing: 1px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-        
-        .inc-symbol {
-            font-size: 1.8rem;
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        /* INC Flag Design - Three stripes */
+        .inc-flag {
+            width: 100px;
+            height: 60px;
             display: flex;
-            gap: 5px;
+            flex-direction: column;
+            border: 1px solid #000;
+            overflow: hidden;
+            position: relative;
         }
         
-        /* Simulated INC flag colors */
-        .inc-flag::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(to right, #00247D, #FFFFFF, #CE1126);
-            border-radius: 8px 8px 0 0;
+        .inc-stripe {
+            width: 100%;
+            height: 33.33%;
+        }
+        
+        .stripe-blue {
+            background-color: #00247D; /* INC Blue */
+        }
+        
+        .stripe-white {
+            background-color: #FFFFFF; /* White */
+        }
+        
+        .stripe-red {
+            background-color: #CE1126; /* INC Red */
+        }
+        
+        /* INC Logo/Text */
+        .inc-text {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: #00247D;
+            text-align: center;
+            margin-top: 5px;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
         
         /* Simulated aged paper texture */
@@ -103,7 +112,7 @@
         
         .heart {
             position: absolute;
-            font-family: 'Cinzel', serif;
+            font-family: 'Arial', sans-serif;
             font-size: 20px;
             color: #2d5016;
             opacity: 0.5;
@@ -204,17 +213,6 @@
             width: 40%;
             height: 1px;
             background: linear-gradient(to right, transparent, #8b4513, transparent);
-        }
-        
-        /* Swash decoration */
-        .title::before {
-            content: '✞';
-            position: absolute;
-            left: 20%;
-            top: -10px;
-            font-size: 1.5rem;
-            color: #8b4513;
-            opacity: 0.5;
         }
         
         /* Paragraph styling - Ink handwriting */
@@ -319,22 +317,24 @@
         
         /* Responsive design */
         @media (max-width: 768px) {
+            .inc-flag-container {
+                top: 15px;
+                right: 15px;
+                padding: 4px;
+            }
+            
             .inc-flag {
-                top: 10px;
-                right: 10px;
-                padding: 6px 10px;
+                width: 80px;
+                height: 48px;
             }
             
-            .inc-symbol {
-                font-size: 1.5rem;
-            }
-            
-            .inc-flag-text {
-                font-size: 0.7rem;
+            .inc-text {
+                font-size: 0.8rem;
             }
             
             .message-container {
                 padding: 30px 35px;
+                margin-top: 80px;
             }
             
             .title {
@@ -356,25 +356,26 @@
         }
         
         @media (max-width: 480px) {
+            .inc-flag-container {
+                top: 10px;
+                right: 10px;
+                padding: 3px;
+            }
+            
             .inc-flag {
-                top: 5px;
-                right: 5px;
-                padding: 4px 8px;
+                width: 60px;
+                height: 36px;
             }
             
-            .inc-symbol {
-                font-size: 1.2rem;
-            }
-            
-            .inc-flag-text {
-                font-size: 0.6rem;
-                margin-top: 2px;
+            .inc-text {
+                font-size: 0.7rem;
+                margin-top: 3px;
             }
             
             .message-container {
                 padding: 25px;
                 margin: 10px;
-                margin-top: 60px; /* Make room for flag */
+                margin-top: 70px;
             }
             
             .title {
@@ -400,10 +401,14 @@
     </style>
 </head>
 <body>
-    <!-- INC Flag at upper right -->
-    <div class="inc-flag">
-        <div class="inc-symbol">✞</div>
-        <div class="inc-flag-text">IN CHRIST</div>
+    <!-- INC Flag at upper right - Proper three stripes -->
+    <div class="inc-flag-container">
+        <div class="inc-flag">
+            <div class="inc-stripe stripe-blue"></div>
+            <div class="inc-stripe stripe-white"></div>
+            <div class="inc-stripe stripe-red"></div>
+        </div>
+        <div class="inc-text">Iglesia Ni Cristo</div>
     </div>
     
     <!-- Floating hearts -->
@@ -427,8 +432,8 @@
         </p>
         
         <div class="faith-element">
-            Tungo sa iisang pananampalataya<br>
-            <em>Efeso 4:13</em>
+            Tungo sa iisang pananampalataya at pag-ibig<br>
+            <em>Katulad ng sinabi: "Ang umiibig sa Diyos ay umiibig din sa kanyang kapatid"</em>
         </div>
         
         <div class="signature">Ang iyong magiging kapatid sa pananampalataya</div>
@@ -459,8 +464,8 @@
             heart.style.fontSize = `${fontSize}px`;
             heart.style.opacity = opacity;
             
-            // Random heart characters for variety
-            const heartChars = ['♥', '❦', '❧', '✞', '✝'];
+            // Hearts only - no cross symbols
+            const heartChars = ['♥', '❦', '❧'];
             heart.innerHTML = heartChars[Math.floor(Math.random() * heartChars.length)];
             
             heartsContainer.appendChild(heart);
@@ -468,7 +473,7 @@
         
         // Add subtle paper crinkle sound effect on load (optional)
         window.addEventListener('load', function() {
-            console.log('Love letter loaded with faith and historic charm ✞');
+            console.log('Love letter loaded with INC flag and historic charm');
         });
         
         // Add ink blot animation on click
@@ -503,16 +508,16 @@
         document.head.appendChild(style);
         
         // INC flag subtle animation
-        const incFlag = document.querySelector('.inc-flag');
+        const incFlagContainer = document.querySelector('.inc-flag-container');
         let flagFloat = 0;
         
         function floatFlag() {
             flagFloat += 0.01;
-            incFlag.style.transform = `translateY(${Math.sin(flagFloat) * 2}px)`;
+            incFlagContainer.style.transform = `translateY(${Math.sin(flagFloat) * 3}px)`;
             requestAnimationFrame(floatFlag);
         }
         
         floatFlag();
     </script>
 </body>
-</html>
+                                                           </html>
