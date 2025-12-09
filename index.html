@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our 8th Monthsary</title>
+    <!-- Import Historic Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Cinzel:wght@400;500&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Dancing Script', cursive;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(10, 46, 10, 0.9) 0%, #0a1f0a 100%),
+                url('https://www.transparenttextures.com/patterns/old-wall.png');
+            color: #2c1810;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            padding: 20px;
+            position: relative;
+        }
+        
+        /* Simulated aged paper texture */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(139, 69, 19, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(101, 67, 33, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        /* Floating hearts container */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .heart {
+            position: absolute;
+            font-family: 'Arial', sans-serif;
+            font-size: 20px;
+            color: #2d5016;
+            opacity: 0.5;
+            text-shadow: 0 0 8px rgba(45, 80, 22, 0.3);
+            animation: float 25s infinite linear;
+            filter: sepia(0.3);
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+        
+        /* Message container - Aged paper look */
+        .message-container {
+            background: 
+                linear-gradient(rgba(245, 238, 220, 0.95), rgba(240, 230, 210, 0.95)),
+                url('https://www.transparenttextures.com/patterns/paper.png');
+            border-radius: 2px;
+            padding: 50px 60px;
+            max-width: 750px;
+            width: 100%;
+            box-shadow: 
+                0 0 40px rgba(101, 67, 33, 0.4),
+                0 0 0 1px #8b7355,
+                0 0 0 8px rgba(139, 115, 85, 0.1),
+                inset 0 0 30px rgba(139, 69, 19, 0.2);
+            position: relative;
+            z-index: 2;
+            border: 1px solid #8b4513;
+            transform: perspective(1000px) rotateX(1deg);
+            margin: 20px;
+            
+            /* Ink bleed effect */
+            background-blend-mode: multiply;
+        }
+        
+        /* Ink stains / decorations */
+        .message-container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 120px;
+            height: 120px;
+            background: url('https://img.icons8.com/ios-filled/100/2d5016/ink-bottle.png') no-repeat center;
+            background-size: contain;
+            opacity: 0.15;
+            transform: rotate(15deg);
+            pointer-events: none;
+        }
+        
+        .message-container::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: -15px;
+            width: 100px;
+            height: 100px;
+            background: url('https://img.icons8.com/ios-filled/100/2d5016/quill.png') no-repeat center;
+            background-size: contain;
+            opacity: 0.12;
+            transform: rotate(-10deg);
+            pointer-events: none;
+        }
+        
+        /* Title styling - Classic Filipino calligraphy */
+        .title {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            margin-bottom: 40px;
+            color: #2d5016;
+            text-shadow: 2px 2px 3px rgba(139, 69, 19, 0.3);
+            letter-spacing: 3px;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 30%;
+            width: 40%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #8b4513, transparent);
+        }
+        
+        /* Decorative element instead of cross */
+        .title::before {
+            content: '✧';
+            position: absolute;
+            left: 20%;
+            top: -10px;
+            font-size: 1.5rem;
+            color: #8b4513;
+            opacity: 0.5;
+        }
+        
+        /* Paragraph styling - Ink handwriting */
+        .paragraph {
+            margin-bottom: 35px;
+            line-height: 1.9;
+            font-size: 1.4rem;
+            text-align: justify;
+            text-indent: 60px;
+            letter-spacing: 0.7px;
+            font-weight: 500;
+            position: relative;
+            color: #1a0f0a;
+            
+            /* Simulate ink variations */
+            background: linear-gradient(to bottom, #1a0f0a, #2c1810);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* First letter drop cap */
+        .paragraph:first-of-type::first-letter {
+            font-family: 'IM Fell English SC', serif;
+            font-size: 4.5rem;
+            font-weight: bold;
+            color: #2d5016;
+            float: left;
+            line-height: 0.8;
+            margin-right: 15px;
+            margin-top: 10px;
+            text-shadow: 2px 2px 4px rgba(139, 69, 19, 0.3);
+            border-right: 2px solid #8b4513;
+            padding-right: 10px;
+        }
+        
+        /* Ink blot effect between paragraphs */
+        .paragraph:first-of-type::after {
+            content: '• • •';
+            position: absolute;
+            bottom: -25px;
+            left: 45%;
+            color: #8b4513;
+            font-size: 1.2rem;
+            letter-spacing: 10px;
+            opacity: 0.5;
+        }
+        
+        /* Romantic separator */
+        .separator {
+            text-align: center;
+            margin: 25px 0;
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            color: #2d5016;
+            padding: 10px;
+            font-style: italic;
+        }
+        
+        /* Signature styling */
+        .signature {
+            text-align: right;
+            margin-top: 30px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #2d5016;
+            padding-top: 20px;
+            border-top: 1px solid rgba(139, 69, 19, 0.3);
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            float: right;
+            padding-right: 40px;
+        }
+        
+        /* Signature flourish */
+        .signature::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            width: 30px;
+            height: 3px;
+            background: linear-gradient(to right, #8b4513, transparent);
+            transform: translateY(-50%);
+        }
+        
+        /* Date styling */
+        .date {
+            text-align: center;
+            margin-top: 50px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: #8b4513;
+            letter-spacing: 5px;
+            clear: both;
+            padding-top: 20px;
+            border-top: 1px dashed rgba(139, 69, 19, 0.3);
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .message-container {
+                padding: 30px 35px;
+            }
+            
+            .title {
+                font-size: 2.2rem;
+            }
+            
+            .paragraph {
+                font-size: 1.2rem;
+                text-indent: 40px;
+            }
+            
+            .paragraph:first-of-type::first-letter {
+                font-size: 3.5rem;
+            }
+            
+            .signature {
+                font-size: 1.7rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .message-container {
+                padding: 25px;
+                margin: 10px;
+            }
+            
+            .title {
+                font-size: 1.8rem;
+                letter-spacing: 2px;
+            }
+            
+            .paragraph {
+                font-size: 1.1rem;
+                text-indent: 30px;
+                line-height: 1.7;
+            }
+            
+            .paragraph:first-of-type::first-letter {
+                font-size: 2.8rem;
+            }
+        }
+        
+        /* Cursor effect - quill cursor */
+        body {
+            cursor: url('https://img.icons8.com/ios-filled/24/2d5016/quill.png'), auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating hearts -->
+    <div class="hearts-container" id="heartsContainer"></div>
+    
+    <!-- Message container -->
+    <div class="message-container">
+        <h1 class="title">Sa Ika-Walong Buwan</h1>
+        
+        <div class="separator">
+            "Ang pag-ibig ay matiyaga at mabait, hindi maiinggitin, hindi nagmamapuri..."<br>
+            <em>Isang dakilang pag-ibig</em>
+        </div>
+        
+        <p class="paragraph">
+            Sa landas ng walong buwang paglalakbay, ikaw ang naging tanglaw ko't kasuyo. Parang kahapon lang nang tayo'y magsimula, ngunit ang bawat sandaling iginugol sa piling mo'y tila isang alaalang walang kupas. Salamat sa lahat ng haplos ng pag-ibig, sa bawat ngiti na nagpapanatag ng puso, at sa tawanang siyang nagpapagaan ng mundo. Sa bawat araw, ang pagmamahal ko'y lumalago — tila halamang dinidilig ng iyong pagtanggap at pang-unawa.
+        </p>
+        
+        <p class="paragraph">
+            At sa bawat paglubog ng araw na ating nakikita, may bagong pag-asa ang sumisikat sa piling mo. Nangangako ako sa sarili — pangalagaan ang liwanag na dala mo sa aking buhay, at panghawakan ang kamay mong siya kong gabay sa dilim. Dahil ang walong buwang ito'y isa lamang unang yugto; pangarap kong lahat ng buwan sa taon ay ating pagyamanin, hanggang sa ang ating kuwento'y maging isang magandang alaala ng kahapon, masaganang ngayon, at magiting na bukas.
+        </p>
+        
+        <div class="separator">
+            Patungo sa walang hanggang pagmamahalan<br>
+            <em>Kasama ka sa bawat hakbang</em>
+        </div>
+        
+        <div class="signature">Ang iyong minamahal</div>
+        <div class="date">♡ ika-8 na Buwan ♡</div>
+    </div>
+    
+    <script>
+        // Create floating hearts
+        const heartsContainer = document.getElementById('heartsContainer');
+        const numberOfHearts = 40;
+        
+        for (let i = 0; i < numberOfHearts; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            
+            // Random properties
+            const left = Math.random() * 100;
+            const animationDuration = 20 + Math.random() * 25;
+            const animationDelay = Math.random() * 20;
+            const fontSize = 12 + Math.random() * 20;
+            const opacity = 0.3 + Math.random() * 0.4;
+            
+            // Apply styles
+            heart.style.left = `${left}vw`;
+            heart.style.animationDuration = `${animationDuration}s`;
+            heart.style.animationDelay = `${animationDelay}s`;
+            heart.style.fontSize = `${fontSize}px`;
+            heart.style.opacity = opacity;
+            
+            // Hearts only - no religious symbols
+            const heartChars = ['♥', '❦', '❧', '♡', '✧'];
+            heart.innerHTML = heartChars[Math.floor(Math.random() * heartChars.length)];
+            
+            heartsContainer.appendChild(heart);
+        }
+        
+        window.addEventListener('load', function() {
+            console.log('Love letter loaded - clean romantic version');
+        });
+        
+        // Add ink blot animation on click
+        document.addEventListener('click', function(e) {
+            const ink = document.createElement('div');
+            ink.style.position = 'fixed';
+            ink.style.left = e.clientX + 'px';
+            ink.style.top = e.clientY + 'px';
+            ink.style.width = '50px';
+            ink.style.height = '50px';
+            ink.style.background = 'radial-gradient(circle, rgba(45,80,22,0.3) 0%, transparent 70%)';
+            ink.style.borderRadius = '50%';
+            ink.style.pointerEvents = 'none';
+            ink.style.zIndex = '3';
+            ink.style.animation = 'inkSpread 0.8s forwards';
+            
+            document.body.appendChild(ink);
+            
+            setTimeout(() => {
+                ink.remove();
+            }, 1000);
+        });
+        
+        // Add ink spread animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes inkSpread {
+                0% { transform: scale(0); opacity: 0.8; }
+                100% { transform: scale(3); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
