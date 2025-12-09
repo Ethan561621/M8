@@ -28,62 +28,6 @@
             position: relative;
         }
         
-        /* INC Flag Container - Proper Design */
-        .inc-flag-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 5px;
-            border-radius: 5px;
-            border: 2px solid #000;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            min-width: 100px;
-        }
-        
-        /* INC Flag Design - Three stripes */
-        .inc-flag {
-            width: 100px;
-            height: 60px;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid #000;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .inc-stripe {
-            width: 100%;
-            height: 33.33%;
-        }
-        
-        .stripe-blue {
-            background-color: #00247D; /* INC Blue */
-        }
-        
-        .stripe-white {
-            background-color: #FFFFFF; /* White */
-        }
-        
-        .stripe-red {
-            background-color: #CE1126; /* INC Red */
-        }
-        
-        /* INC Logo/Text */
-        .inc-text {
-            font-family: 'Cinzel', serif;
-            font-size: 0.9rem;
-            color: #00247D;
-            text-align: center;
-            margin-top: 5px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-        
         /* Simulated aged paper texture */
         body::before {
             content: '';
@@ -215,6 +159,17 @@
             background: linear-gradient(to right, transparent, #8b4513, transparent);
         }
         
+        /* Decorative element instead of cross */
+        .title::before {
+            content: '✧';
+            position: absolute;
+            left: 20%;
+            top: -10px;
+            font-size: 1.5rem;
+            color: #8b4513;
+            opacity: 0.5;
+        }
+        
         /* Paragraph styling - Ink handwriting */
         .paragraph {
             margin-bottom: 35px;
@@ -261,16 +216,14 @@
             opacity: 0.5;
         }
         
-        /* Faith element - INC reference */
-        .faith-element {
+        /* Romantic separator */
+        .separator {
             text-align: center;
             margin: 25px 0;
             font-family: 'Cinzel', serif;
             font-size: 1rem;
             color: #2d5016;
             padding: 10px;
-            border-top: 1px dashed rgba(139, 69, 19, 0.3);
-            border-bottom: 1px dashed rgba(139, 69, 19, 0.3);
             font-style: italic;
         }
         
@@ -317,24 +270,8 @@
         
         /* Responsive design */
         @media (max-width: 768px) {
-            .inc-flag-container {
-                top: 15px;
-                right: 15px;
-                padding: 4px;
-            }
-            
-            .inc-flag {
-                width: 80px;
-                height: 48px;
-            }
-            
-            .inc-text {
-                font-size: 0.8rem;
-            }
-            
             .message-container {
                 padding: 30px 35px;
-                margin-top: 80px;
             }
             
             .title {
@@ -356,26 +293,9 @@
         }
         
         @media (max-width: 480px) {
-            .inc-flag-container {
-                top: 10px;
-                right: 10px;
-                padding: 3px;
-            }
-            
-            .inc-flag {
-                width: 60px;
-                height: 36px;
-            }
-            
-            .inc-text {
-                font-size: 0.7rem;
-                margin-top: 3px;
-            }
-            
             .message-container {
                 padding: 25px;
                 margin: 10px;
-                margin-top: 70px;
             }
             
             .title {
@@ -401,16 +321,6 @@
     </style>
 </head>
 <body>
-    <!-- INC Flag at upper right - Proper three stripes -->
-    <div class="inc-flag-container">
-        <div class="inc-flag">
-            <div class="inc-stripe stripe-blue"></div>
-            <div class="inc-stripe stripe-white"></div>
-            <div class="inc-stripe stripe-red"></div>
-        </div>
-        <div class="inc-text">Iglesia Ni Cristo</div>
-    </div>
-    
     <!-- Floating hearts -->
     <div class="hearts-container" id="heartsContainer"></div>
     
@@ -418,9 +328,9 @@
     <div class="message-container">
         <h1 class="title">Sa Ika-Walong Buwan</h1>
         
-        <div class="faith-element">
-            "Pagpalain nawa tayo ng Panginoon sa ating pagmamahalan"<br>
-            <em>Sambahayan ng Diyos</em>
+        <div class="separator">
+            "Ang pag-ibig ay matiyaga at mabait, hindi maiinggitin, hindi nagmamapuri..."<br>
+            <em>Isang dakilang pag-ibig</em>
         </div>
         
         <p class="paragraph">
@@ -431,13 +341,13 @@
             At sa bawat paglubog ng araw na ating nakikita, may bagong pag-asa ang sumisikat sa piling mo. Nangangako ako sa sarili — pangalagaan ang liwanag na dala mo sa aking buhay, at panghawakan ang kamay mong siya kong gabay sa dilim. Dahil ang walong buwang ito'y isa lamang unang yugto; pangarap kong lahat ng buwan sa taon ay ating pagyamanin, hanggang sa ang ating kuwento'y maging isang magandang alaala ng kahapon, masaganang ngayon, at magiting na bukas.
         </p>
         
-        <div class="faith-element">
-            Tungo sa iisang pananampalataya at pag-ibig<br>
-            <em>Katulad ng sinabi: "Ang umiibig sa Diyos ay umiibig din sa kanyang kapatid"</em>
+        <div class="separator">
+            Patungo sa walang hanggang pagmamahalan<br>
+            <em>Kasama ka sa bawat hakbang</em>
         </div>
         
-        <div class="signature">Ang iyong magiging kapatid sa pananampalataya</div>
-        <div class="date">✦ ika-8 na Buwan ✦</div>
+        <div class="signature">Ang iyong minamahal</div>
+        <div class="date">♡ ika-8 na Buwan ♡</div>
     </div>
     
     <script>
@@ -448,7 +358,6 @@
         for (let i = 0; i < numberOfHearts; i++) {
             const heart = document.createElement('div');
             heart.classList.add('heart');
-            heart.innerHTML = '♥';
             
             // Random properties
             const left = Math.random() * 100;
@@ -464,16 +373,15 @@
             heart.style.fontSize = `${fontSize}px`;
             heart.style.opacity = opacity;
             
-            // Hearts only - no cross symbols
-            const heartChars = ['♥', '❦', '❧'];
+            // Hearts only - no religious symbols
+            const heartChars = ['♥', '❦', '❧', '♡', '✧'];
             heart.innerHTML = heartChars[Math.floor(Math.random() * heartChars.length)];
             
             heartsContainer.appendChild(heart);
         }
         
-        // Add subtle paper crinkle sound effect on load (optional)
         window.addEventListener('load', function() {
-            console.log('Love letter loaded with INC flag and historic charm');
+            console.log('Love letter loaded - clean romantic version');
         });
         
         // Add ink blot animation on click
@@ -506,18 +414,6 @@
             }
         `;
         document.head.appendChild(style);
-        
-        // INC flag subtle animation
-        const incFlagContainer = document.querySelector('.inc-flag-container');
-        let flagFloat = 0;
-        
-        function floatFlag() {
-            flagFloat += 0.01;
-            incFlagContainer.style.transform = `translateY(${Math.sin(flagFloat) * 3}px)`;
-            requestAnimationFrame(floatFlag);
-        }
-        
-        floatFlag();
     </script>
 </body>
-                                                           </html>
+</html>
